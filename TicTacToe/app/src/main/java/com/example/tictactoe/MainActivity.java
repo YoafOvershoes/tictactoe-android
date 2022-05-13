@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                         //winner is declared
                         currPlayer.setText("The winner is Player " + gameEnd[gameEndWinnerPosition] + "!");
                         // TODO: COLOR THE WINNING CELLS
-                        colorWinningCells(new int[]{gameEnd[gameEndCell1 + 1],gameEnd[gameEndCell2 + 1],gameEnd[gameEndCell3 + 1]});
+                        colorWinningCells(gameEnd);
                     }
 
                     removeBoardClicks();
@@ -116,14 +116,17 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void colorWinningCells(int[] winningCells) {
-        for (int winningCellIndex = 0; winningCellIndex < winningCells.length; winningCellIndex++) {
-            String cellID = "cell_" + winningCells[winningCellIndex];
+    public void colorWinningCells(int[] winningData) {
+        int winningPlayer = winningData[gameEndWinnerPosition];
+        for (int winningCellIndex = 1; winningCellIndex < winningData.length; winningCellIndex++) {
+            String cellID = "cell_" + winningData[winningCellIndex];
             int resource = getResources().getIdentifier(cellID, "id", getPackageName());
             ImageView cell = findViewById(resource);
 
-            // TODO: set to new background Color
-            cell.setBackgroundColor(0);
+            if (winningPlayer == PLAYER1_ID)
+                cell.setBackgroundResource(R.drawable.cross_green);
+            else
+                cell.setBackgroundResource(R.drawable.circle_greenpng);
         }
     }
 }
