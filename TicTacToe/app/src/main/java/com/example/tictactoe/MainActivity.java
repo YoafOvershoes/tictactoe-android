@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -53,8 +54,6 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("TAG", "clicked " + cellID);
                 if (gameBoardArray[finalCellIndex] != NO_PLAYER_ID)
                     return;
-                //String buttonNum = view.getResources().getResourceEntryName(view.getId());
-                //int position = Integer.parseInt(cellID.substring(cellID.length() - 1, cellID.length()));
 
                 if (firstPlayer) {
                     gameBoardArray[finalCellIndex] = PLAYER1_ID;
@@ -78,7 +77,10 @@ public class MainActivity extends AppCompatActivity {
                         //stopGame();
                         currPlayer.setText("The winner is Player " + gameEnd[gameEndWinnerPosition] + "!");
                         // TODO: COLOR THE WINNING CELLS
+                        colorWinningCells(new int[]{gameEnd[gameEndCell1 + 1],gameEnd[gameEndCell2 + 1],gameEnd[gameEndCell3 + 1]});
                     }
+
+                    removeBoardClicks();
                 }
 
                 firstPlayer = (!firstPlayer);
@@ -110,30 +112,20 @@ public class MainActivity extends AppCompatActivity {
         return new int[0];
     }
 
-
-/*    public void drawLine(int[] winner, int winPo) {
-        if (winPo <= 2) {
-            line2.setBackgroundColor(Color.RED);
-            if (winPo == 0)
-                line2.setY(imageButtonsArray[0].getY() + 100);
-            if (winPo == 1)
-                line2.setY(imageButtonsArray[3].getY() + 100);
-            if (winPo == 2)
-                line2.setY(imageButtonsArray[6].getY() + 100);
-        } else if (winPo > 2 && winPo <= 5) {
-            line.setBackgroundColor(Color.RED);
-            if (winPo == 3)
-                line.setX(imageButtonsArray[3].getX() + 100);
-            if (winPo == 4)
-                line.setX(imageButtonsArray[4].getX() + 100);
-            if (winPo == 5)
-                line.setX(imageButtonsArray[5].getX() + 100);
-        } else {
-            line3.setBackgroundColor(Color.RED);
-            if (winPo == 6)
-                line3.setRotation(-45);
-            if (winPo == 7)
-                line3.setRotation(45);
+    public void removeBoardClicks() {
+        for (int cellIndex = 0; cellIndex < 9; cellIndex++) {
+            cellArray[cellIndex].setClickable(false);
         }
-    }*/
+    }
+
+    public void colorWinningCells(int[] winningCells) {
+        for (int winningCellIndex = 0; winningCellIndex < winningCells.length; winningCellIndex++) {
+            String cellID = "cell_" + winningCells[winningCellIndex];
+            int resource = getResources().getIdentifier(cellID, "id", getPackageName());
+            ImageView cell = findViewById(resource);
+
+            // set to new backgroudColor
+            cell.setBackgroundColor(0);
+        }
+    }
 }
