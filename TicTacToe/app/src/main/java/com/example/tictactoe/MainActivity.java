@@ -1,7 +1,7 @@
 package com.example.tictactoe;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import java.util.concurrent.TimeUnit;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.GridLayout;
@@ -32,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
             {0, 3, 6}, {1, 4, 7}, {2, 5, 8},
             {0, 4, 8}, {2, 4, 6}
     };
+
+    long gameTimeStart;
+    long gameTimeEnd;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
                         //TIE
                         currPlayer.setText("TIE!!!");
                     } else {
+                        gameTimeEnd = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - gameTimeStart);
                         //winner is declared
                         currPlayer.setText("The winner is Player " + gameEnd[gameEndWinnerPosition] + "!");
                         // TODO: COLOR THE WINNING CELLS
@@ -86,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
                 firstPlayer = (!firstPlayer);
             });
         }
+
+        gameTimeStart = System.currentTimeMillis();
     }
 
     public int[] checkGameEnd() {
