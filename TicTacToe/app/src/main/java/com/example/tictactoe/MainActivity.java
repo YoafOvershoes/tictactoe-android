@@ -57,11 +57,13 @@ public class MainActivity extends AppCompatActivity {
 
                 if (firstPlayer) {
                     gameBoardArray[finalCellIndex] = PLAYER1_ID;
-                    view.setBackgroundResource(R.drawable.cross);
+                    ImageView cell = (ImageView) view;
+                    cell.setImageResource(R.drawable.cross);
                     currPlayer.setText(players[PLAYER2_ID -1]);
                 } else {
                     gameBoardArray[finalCellIndex] = PLAYER2_ID;
-                    view.setBackgroundResource(R.drawable.circle);
+                    ImageView cell = (ImageView) view;
+                    cell.setImageResource(R.drawable.circle);
                     currPlayer.setText(players[PLAYER1_ID -1]);
                 }
 
@@ -124,9 +126,9 @@ public class MainActivity extends AppCompatActivity {
             ImageView cell = findViewById(resource);
 
             if (winningPlayer == PLAYER1_ID)
-                cell.setBackgroundResource(R.drawable.cross_green);
+                cell.setImageResource(R.drawable.cross_green);
             else
-                cell.setBackgroundResource(R.drawable.circle_greenpng);
+                cell.setImageResource(R.drawable.circle_greenpng);
         }
     }
 }
