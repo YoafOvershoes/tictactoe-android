@@ -71,10 +71,8 @@ public class MainActivity extends AppCompatActivity {
                             && currTurn == maxTurns) {
                         //TIE
                         currPlayer.setText("TIE!!!");
-                        //stopGame();
                     } else {
                         //winner is declared
-                        //stopGame();
                         currPlayer.setText("The winner is Player " + gameEnd[gameEndWinnerPosition] + "!");
                         // TODO: COLOR THE WINNING CELLS
                         colorWinningCells(new int[]{gameEnd[gameEndCell1 + 1],gameEnd[gameEndCell2 + 1],gameEnd[gameEndCell3 + 1]});
@@ -124,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
             int resource = getResources().getIdentifier(cellID, "id", getPackageName());
             ImageView cell = findViewById(resource);
 
-            // set to new backgroudColor
+            // TODO: set to new background Color
             cell.setBackgroundColor(0);
         }
     }
