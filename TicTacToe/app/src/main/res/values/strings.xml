@@ -8,4 +8,5 @@
     <string name="edit_player_name">player name</string>
     <string name="save_btn">SAVE</string>
     <string name="new_record">NEW RECORD!!!</string>
+    <string name="player_name_hint">PLAYER NAME</string>
 </resources>
