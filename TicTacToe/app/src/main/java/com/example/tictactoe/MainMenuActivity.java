@@ -10,6 +10,8 @@ public class MainMenuActivity extends AppCompatActivity {
 
     Button playBtn;
     Button tutorialBtn;
+    Button recordsBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,11 +19,19 @@ public class MainMenuActivity extends AppCompatActivity {
 
         playBtn = findViewById(R.id.playBtn);
         tutorialBtn = findViewById(R.id.torurialBtn);
+        recordsBtn = findViewById(R.id.gameRecordsBtn);
 
 
         playBtn.setOnClickListener(view -> {
             Intent playIntent = new Intent(this, MainActivity.class);
             startActivity(playIntent);
         });
+
+        recordsBtn.setOnClickListener(view -> {
+            Intent recordsIntent = new Intent(this, GameRecordsActivity.class);
+            startActivity(recordsIntent);
+        });
+
+
     }
 }

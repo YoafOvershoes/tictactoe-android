@@ -54,7 +54,7 @@ public abstract class AppDatabase extends RoomDatabase {
                 dao.insert(record);
                 record = new GameRecord("hemi", 7, 0);
                 dao.insert(record);
-                record = new GameRecord("dudi", 3, 0);
+                record = new GameRecord("dudi", 3, 1);
                 dao.insert(record);
                 record = new GameRecord("yoav2", 4, 0);
                 dao.insert(record);

@@ -20,7 +20,7 @@ public class RecordListApadter extends ListAdapter <GameRecord, RecordViewHolder
     @Override
     public void onBindViewHolder(RecordViewHolder holder, int position) {
         GameRecord current = getItem(position);
-        holder.bind(String.valueOf(current.getRecord()));
+        holder.bind(String.valueOf(current.getRecord()), current.getType(), current.getPlayerName());
     }
 
     static class RecordDiff extends DiffUtil.ItemCallback<GameRecord> {

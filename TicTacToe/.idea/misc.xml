@@ -3,11 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Yoav/Studies/Android/Matala1/tictactoe-android/TicTacToe/app/src/main/res/drawable/board_bg.xml" value="0.1445" />
         <entry key="..\:/Yoav/Studies/Android/Matala1/tictactoe-android/TicTacToe/app/src/main/res/layout/activity_game_records.xml" value="0.12635869565217392" />
         <entry key="..\:/Yoav/Studies/Android/Matala1/tictactoe-android/TicTacToe/app/src/main/res/layout/activity_game_records2.xml" value="0.24322916666666666" />
         <entry key="..\:/Yoav/Studies/Android/Matala1/tictactoe-android/TicTacToe/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Yoav/Studies/Android/Matala1/tictactoe-android/TicTacToe/app/src/main/res/layout/activity_main_menu.xml" value="0.12360688956433637" />
-        <entry key="..\:/Yoav/Studies/Android/Matala1/tictactoe-android/TicTacToe/app/src/main/res/layout/recyclerview_item.xml" value="0.1" />
+        <entry key="..\:/Yoav/Studies/Android/Matala1/tictactoe-android/TicTacToe/app/src/main/res/layout/recyclerview_item.xml" value="0.25" />
       </map>
     </option>
   </component>

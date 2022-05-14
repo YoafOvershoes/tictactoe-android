@@ -1,6 +1,7 @@
 package com.example.tictactoe;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.concurrent.TimeUnit;
 
 import android.content.Intent;
@@ -39,12 +40,16 @@ public class MainActivity extends AppCompatActivity {
     long gameTimeStart;
     long gameTimeEnd;
 
+
     Button gotoRecords;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // flags that the game was a tie AND how much time has passed
+        gameTimeEnd = -1;
 
         gotoRecords = findViewById(R.id.goToRecords);
         gotoRecords.setOnClickListener(view -> {
@@ -74,12 +79,12 @@ public class MainActivity extends AppCompatActivity {
                     gameBoardArray[finalCellIndex] = PLAYER1_ID;
                     ImageView cell = (ImageView) view;
                     cell.setImageResource(R.drawable.cross);
-                    currPlayer.setText(players[PLAYER2_ID -1]);
+                    currPlayer.setText(players[PLAYER2_ID - 1]);
                 } else {
                     gameBoardArray[finalCellIndex] = PLAYER2_ID;
                     ImageView cell = (ImageView) view;
                     cell.setImageResource(R.drawable.circle);
-                    currPlayer.setText(players[PLAYER1_ID -1]);
+                    currPlayer.setText(players[PLAYER1_ID - 1]);
                 }
 
                 int[] gameEnd = checkGameEnd();
@@ -88,6 +93,12 @@ public class MainActivity extends AppCompatActivity {
                             && currTurn == maxTurns) {
                         //TIE
                         currPlayer.setText("TIE!!!");
+                        try {
+                            TimeUnit.SECONDS.sleep(3);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
                     } else {
                         gameTimeEnd = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - gameTimeStart);
                         //winner is declared
@@ -97,6 +108,12 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     removeBoardClicks();
+
+
+                    Intent recordsIntent = new Intent(this, GameRecordsActivity.class);
+                    recordsIntent.putExtra("game_time", (int)gameTimeEnd);
+                    finish();
+                    startActivity(recordsIntent);
                 }
 
                 firstPlayer = (!firstPlayer);
@@ -106,13 +123,14 @@ public class MainActivity extends AppCompatActivity {
         gameTimeStart = System.currentTimeMillis();
     }
 
+
     public int[] checkGameEnd() {
         int winner = NO_PLAYER_ID;
         int[] winningData = new int[4];
         for (int[] winningPosition : winningPositions) {
             if (gameBoardArray[winningPosition[gameEndCell1]] != NO_PLAYER_ID)
                 if (gameBoardArray[winningPosition[gameEndCell1]] == gameBoardArray[winningPosition[gameEndCell2]]
-                        &&gameBoardArray[winningPosition[gameEndCell1]] == gameBoardArray[winningPosition[gameEndCell3]]) {
+                        && gameBoardArray[winningPosition[gameEndCell1]] == gameBoardArray[winningPosition[gameEndCell3]]) {
                     winner = gameBoardArray[winningPosition[gameEndCell1]];
                     winningData[gameEndWinnerPosition] = winner;
                     winningData[gameEndCell1 + 1] = winningPosition[gameEndCell1];
