@@ -5,4 +5,7 @@
     <string name="tutorial_button_text">TUTORIAL</string>
     <string name="player_1">Player 1</string>
     <string name="player_2">Player 2</string>
+    <string name="finishedIntro">Finish</string>
+    <string name="skip">Skip</string>
+    <string name="introDescription1">Welcome</string>
 </resources>
