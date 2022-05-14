@@ -33,8 +33,6 @@ public class IntroFragment extends Fragment {
 
         data = (Data) getArguments().getSerializable("data");
         position = getArguments().getInt("position");
-
-        Log.d(TAG, "onCreate" + data.getText());
     }
 
     @Override
@@ -50,7 +48,6 @@ public class IntroFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Log.d(TAG, "onViewCreated" + data.getText());
 
         ImageView tv = view.findViewById(R.id.tv);
         tv.setImageResource(data.getImg());
@@ -59,31 +56,4 @@ public class IntroFragment extends Fragment {
         description.setText(data.getText());
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        Log.d(TAG, "onActivityCreated" + data.getText());
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-
-        Log.d(TAG, "onAttach");
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-
-        Log.d(TAG, "onDetach" + data.getText());
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-
-        Log.d(TAG, "onPause" + data.getText());
-    }
 }

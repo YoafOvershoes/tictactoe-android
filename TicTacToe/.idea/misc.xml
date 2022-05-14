@@ -13,6 +13,8 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.4185" />
         <entry key="app/src/main/res/drawable/selected_dot.xml" value="0.2785" />
         <entry key="app/src/main/res/drawable/tab_selector.xml" value="0.2785" />
+        <entry key="app/src/main/res/font/font.xml" value="0.45677083333333335" />
+        <entry key="app/src/main/res/layout-v28/activity_main.xml" value="0.34375" />
         <entry key="app/src/main/res/layout/activity_intro.xml" value="0.49322916666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main_menu.xml" value="0.49322916666666666" />
