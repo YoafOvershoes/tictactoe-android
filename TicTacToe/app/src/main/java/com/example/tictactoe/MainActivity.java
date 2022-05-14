@@ -2,8 +2,11 @@ package com.example.tictactoe;
 
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.concurrent.TimeUnit;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -36,11 +39,19 @@ public class MainActivity extends AppCompatActivity {
     long gameTimeStart;
     long gameTimeEnd;
 
+    Button gotoRecords;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        gotoRecords = findViewById(R.id.goToRecords);
+        gotoRecords.setOnClickListener(view -> {
+            Intent recordIntent = new Intent(this, GameRecordsActivity.class);
+            startActivity(recordIntent);
+        });
+
 
         firstPlayer = true;
         currPlayer = findViewById(R.id.currPlayerTextView);

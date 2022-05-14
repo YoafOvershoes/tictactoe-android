@@ -174,4 +174,14 @@
     </LinearLayout>
 
 
+    <Button
+        android:id="@+id/goToRecords"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+        android:text="RECORDS"></Button>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
