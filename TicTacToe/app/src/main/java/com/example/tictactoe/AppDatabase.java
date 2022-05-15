@@ -47,9 +47,9 @@ public abstract class AppDatabase extends RoomDatabase {
             databaseWriteExecutor.execute(() -> {
                 // Populate the database in the background.
                 // If you want to start with more words, just add them.
+
                 GameRecordDao dao = INSTANCE.gameRecordDao();
                 dao.deleteAll();
-
                 dao.insert(new GameRecord("Yoav", 5, 0));
                 dao.insert(new GameRecord("John", 10, 0));
                 dao.insert(new GameRecord("Yossi", 9, 0));

@@ -58,7 +58,7 @@ public class GameRecordsActivity extends AppCompatActivity {
 
             if (gameTime != NOT_A_GAME_RECORD) {
                 for (int recordIndex = 0; recordIndex < records.size(); recordIndex++) {
-                    if (gameTime < records.get(recordIndex).getRecord() || records.size() + 1 < 10) {
+                    if (gameTime < records.get(recordIndex).getRecord() || records.size() < 10) {
                         Intent recordsIntent = new Intent(this, NewRecordActivity.class);
                         recordsIntent.putExtra("time", gameTime);
                         recordsIntent.putExtra("player_type", playerType);
