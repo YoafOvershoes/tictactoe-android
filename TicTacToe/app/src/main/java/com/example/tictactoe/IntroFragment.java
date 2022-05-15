@@ -1,15 +1,12 @@
 package com.example.tictactoe;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class IntroFragment extends Fragment {
@@ -37,7 +34,6 @@ public class IntroFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.d(TAG, "onCreateView" + data.getText());
 
         View view = getActivity().getLayoutInflater().inflate(R.layout.fragment_intro, container, false);
         view.setTag(position);

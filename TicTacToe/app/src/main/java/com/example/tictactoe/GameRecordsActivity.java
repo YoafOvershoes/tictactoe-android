@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 
 import java.util.ArrayList;
@@ -15,15 +14,14 @@ import java.util.ArrayList;
 public class GameRecordsActivity extends AppCompatActivity {
 
     public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
-
-    private RecordViewModel mRecordViewModel;
-    RecyclerView recyclerView;
     static final int NOT_A_GAME_RECORD = -1;
+    RecyclerView recyclerView;
     ArrayList<GameRecord> gameRecords;
     int gameTime;
     int playerType;
-
     Button mainMenuButton;
+    private RecordViewModel mRecordViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -55,18 +53,15 @@ public class GameRecordsActivity extends AppCompatActivity {
             gameRecords.clear();
 
             for (int recordIndex = 0; recordIndex < records.size(); recordIndex++) {
-                Log.i("Record", "" + records.get(recordIndex).record);
                 gameRecords.add(records.get(recordIndex));
             }
 
             if (gameTime != NOT_A_GAME_RECORD) {
                 for (int recordIndex = 0; recordIndex < records.size(); recordIndex++) {
-                    if (gameTime < records.get(recordIndex).getRecord()) {
-                        Log.i("RecordSurpassed", "old time " + records.get(recordIndex).record + " new time " + gameTime);
+                    if (gameTime < records.get(recordIndex).getRecord() || records.size() + 1 < 10) {
                         Intent recordsIntent = new Intent(this, NewRecordActivity.class);
                         recordsIntent.putExtra("time", gameTime);
                         recordsIntent.putExtra("player_type", playerType);
-                        //playerType = getIntent().getIntExtra("player_type", );
                         recordIndex = records.size();
                         startActivity(recordsIntent);
                         finish();

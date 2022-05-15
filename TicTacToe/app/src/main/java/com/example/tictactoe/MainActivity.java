@@ -6,9 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
-import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -81,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
             int finalCellIndex = cellIndex;
             cellArray[cellIndex].setOnClickListener(view -> {
                 currTurn++;
-                Log.i("TAG", "clicked " + cellID);
                 if (gameBoardArray[finalCellIndex] != NO_PLAYER_ID)
                     return;
 
