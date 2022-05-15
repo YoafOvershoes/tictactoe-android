@@ -48,7 +48,7 @@ public abstract class AppDatabase extends RoomDatabase {
                 // Populate the database in the background.
                 // If you want to start with more words, just add them.
                 GameRecordDao dao = INSTANCE.gameRecordDao();
-                //dao.deleteAll();
+                dao.deleteAll();
 
                 GameRecord record = new GameRecord("yoav", 5, 0);
                 dao.insert(record);

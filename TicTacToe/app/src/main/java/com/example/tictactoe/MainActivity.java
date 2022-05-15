@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     long gameTimeStart;
     long gameTimeEnd;
 
+    int winningPlayer;
 
     Button gotoRecords;
 
@@ -93,16 +94,12 @@ public class MainActivity extends AppCompatActivity {
                             && currTurn == maxTurns) {
                         //TIE
                         currPlayer.setText("TIE!!!");
-                        try {
-                            TimeUnit.SECONDS.sleep(3);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-
+                        winningPlayer = NO_PLAYER_ID;
                     } else {
                         gameTimeEnd = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - gameTimeStart);
                         //winner is declared
                         currPlayer.setText("The winner is Player " + gameEnd[gameEndWinnerPosition] + "!");
+                        winningPlayer = gameEnd[gameEndWinnerPosition] - 1;
                         // TODO: COLOR THE WINNING CELLS
                         colorWinningCells(gameEnd);
                     }
@@ -110,8 +107,10 @@ public class MainActivity extends AppCompatActivity {
                     removeBoardClicks();
 
 
+
                     Intent recordsIntent = new Intent(this, GameRecordsActivity.class);
                     recordsIntent.putExtra("game_time", (int)gameTimeEnd);
+                    recordsIntent.putExtra("player_type", winningPlayer);
                     finish();
                     startActivity(recordsIntent);
                 }

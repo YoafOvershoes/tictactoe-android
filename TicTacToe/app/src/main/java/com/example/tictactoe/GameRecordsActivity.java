@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -19,11 +20,13 @@ public class GameRecordsActivity extends AppCompatActivity {
     static final int NOT_A_GAME_RECORD = -1;
     ArrayList<GameRecord> gameRecords;
     int gameTime;
+    int playerType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         gameTime = getIntent().getIntExtra("game_time", -1);
+        playerType = getIntent().getIntExtra("player_type", -1);
         gameRecords = new ArrayList<GameRecord>();
 
         super.onCreate(savedInstanceState);
@@ -51,11 +54,16 @@ public class GameRecordsActivity extends AppCompatActivity {
                 for (int recordIndex = 0; recordIndex < records.size(); recordIndex++) {
                     if (gameTime < records.get(recordIndex).getRecord()) {
                         Log.i("RecordSurpassed", "old time " + records.get(recordIndex).record + " new time " + gameTime);
+                        Intent recordsIntent = new Intent(this, NewRecordActivity.class);
+                        recordsIntent.putExtra("time", gameTime);
+                        recordsIntent.putExtra("player_type", playerType);
+                        //playerType = getIntent().getIntExtra("player_type", );
+                        recordIndex = records.size();
+                        startActivity(recordsIntent);
                         finish();
                     }
                 }
             }
-
         });
     }
 }

@@ -20,4 +20,7 @@ public interface GameRecordDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(GameRecord record);
+
+    @Query("DELETE FROM game_record")
+    void deleteAll();
 }
