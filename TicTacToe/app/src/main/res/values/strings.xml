@@ -11,4 +11,7 @@
     <string name="player_name_hint">PLAYER NAME</string>
     <string name="records_button">RECORDS</string>
     <string name="main_menu_button_text">MAIN MENU</string>
+    <string name="finishedIntro">Finish</string>
+    <string name="skip">Skip</string>
+    <string name="introDescription1">Welcome</string>
 </resources>

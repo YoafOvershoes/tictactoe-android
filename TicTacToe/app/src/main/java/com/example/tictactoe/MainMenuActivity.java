@@ -32,6 +32,11 @@ public class MainMenuActivity extends AppCompatActivity {
             startActivity(recordsIntent);
         });
 
+        tutorialBtn.setOnClickListener(view -> {
+            Intent playIntent = new Intent(this, IntroActivity.class);
+            playIntent.putExtra("isFromMenu",true);
+            startActivity(playIntent);
+        });
 
     }
 }

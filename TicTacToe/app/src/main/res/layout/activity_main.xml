@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/purple_500"
     tools:context=".MainActivity">
+
 
 
     <TextView
@@ -12,8 +14,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="100dp"
+        android:fontFamily="@font/poppins"
         android:text="@string/tictactoeheader"
+<<<<<<< HEAD
         android:textColor="@color/dark_blue"
+=======
+        android:textColor="@color/light_purple"
+>>>>>>> ef67d82c40a9faee3882cd84ab595427e2520e58
         android:textSize="50sp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,11 +32,18 @@
         android:id="@+id/currPlayerTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:textColor="@color/white"
         android:text="@string/player_1"
+        android:textFontWeight="800"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+<<<<<<< HEAD
         app:layout_constraintTop_toBottomOf="@id/txtheader" />
+=======
+        app:layout_constraintTop_toBottomOf="@id/txtheader"/>
+>>>>>>> ef67d82c40a9faee3882cd84ab595427e2520e58
 
 
     <LinearLayout
