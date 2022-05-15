@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     int winningPlayer;
 
     Button gotoRecords;
+    Button goToMainMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,14 @@ public class MainActivity extends AppCompatActivity {
         gotoRecords.setOnClickListener(view -> {
             Intent recordIntent = new Intent(this, GameRecordsActivity.class);
             startActivity(recordIntent);
+            finish();
+        });
+
+        goToMainMenu = findViewById(R.id.goToMainMenu);
+        goToMainMenu.setOnClickListener(view -> {
+            Intent recordIntent = new Intent(this, MainMenuActivity.class);
+            startActivity(recordIntent);
+            finish();
         });
 
 

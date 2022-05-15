@@ -9,4 +9,6 @@
     <string name="save_btn">SAVE</string>
     <string name="new_record">NEW RECORD!!!</string>
     <string name="player_name_hint">PLAYER NAME</string>
+    <string name="records_button">RECORDS</string>
+    <string name="main_menu_button_text">MAIN MENU</string>
 </resources>

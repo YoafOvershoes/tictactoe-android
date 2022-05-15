@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 
 import java.util.ArrayList;
 
@@ -22,6 +23,7 @@ public class GameRecordsActivity extends AppCompatActivity {
     int gameTime;
     int playerType;
 
+    Button mainMenuButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -31,6 +33,13 @@ public class GameRecordsActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_records);
+
+        mainMenuButton = findViewById(R.id.MainMenuButton);
+
+        mainMenuButton.setOnClickListener(view -> {
+            Intent mainMenuIntent = new Intent(this, MainMenuActivity.class);
+            startActivity(mainMenuIntent);
+        });
 
         recyclerView = findViewById(R.id.recordsview);
         final RecordListApadter recordListApadter = new RecordListApadter(new RecordListApadter.RecordDiff());

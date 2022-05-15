@@ -30,5 +30,15 @@
 
 </androidx.recyclerview.widget.RecyclerView>
 
+    <Button
+        android:id="@+id/MainMenuButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/main_menu_button_text"
+        app:layout_constraintTop_toBottomOf="@id/recordsview"
+        app:layout_constraintStart_toStartOf="@id/recordsview"
+        app:layout_constraintEnd_toEndOf="@id/recordsview"
+        app:layout_constraintBottom_toBottomOf="parent"></Button>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
