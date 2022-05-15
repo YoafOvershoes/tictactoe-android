@@ -40,5 +40,15 @@
         app:layout_constraintStart_toStartOf="@id/playBtn"
         app:layout_constraintEnd_toEndOf="@id/playBtn"/>
 
+    <Button
+        android:id="@+id/gameRecordsBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/records_button"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/torurialBtn"
+        app:layout_constraintStart_toStartOf="@id/playBtn"
+        app:layout_constraintEnd_toEndOf="@id/playBtn"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

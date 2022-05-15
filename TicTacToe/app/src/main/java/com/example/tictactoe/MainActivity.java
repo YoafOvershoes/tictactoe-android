@@ -2,8 +2,12 @@ package com.example.tictactoe;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.concurrent.TimeUnit;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -33,10 +37,36 @@ public class MainActivity extends AppCompatActivity {
             {0, 4, 8}, {2, 4, 6}
     };
 
+    long gameTimeStart;
+    long gameTimeEnd;
+
+    int winningPlayer;
+
+    Button gotoRecords;
+    Button goToMainMenu;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // flags that the game was a tie AND how much time has passed
+        gameTimeEnd = -1;
+
+        gotoRecords = findViewById(R.id.goToRecords);
+        gotoRecords.setOnClickListener(view -> {
+            Intent recordIntent = new Intent(this, GameRecordsActivity.class);
+            startActivity(recordIntent);
+            finish();
+        });
+
+        goToMainMenu = findViewById(R.id.goToMainMenu);
+        goToMainMenu.setOnClickListener(view -> {
+            Intent recordIntent = new Intent(this, MainMenuActivity.class);
+            startActivity(recordIntent);
+            finish();
+        });
+
 
         firstPlayer = true;
         currPlayer = findViewById(R.id.currPlayerTextView);
@@ -59,12 +89,12 @@ public class MainActivity extends AppCompatActivity {
                     gameBoardArray[finalCellIndex] = PLAYER1_ID;
                     ImageView cell = (ImageView) view;
                     cell.setImageResource(R.drawable.cross);
-                    currPlayer.setText(players[PLAYER2_ID -1]);
+                    currPlayer.setText(players[PLAYER2_ID - 1]);
                 } else {
                     gameBoardArray[finalCellIndex] = PLAYER2_ID;
                     ImageView cell = (ImageView) view;
                     cell.setImageResource(R.drawable.circle);
-                    currPlayer.setText(players[PLAYER1_ID -1]);
+                    currPlayer.setText(players[PLAYER1_ID - 1]);
                 }
 
                 int[] gameEnd = checkGameEnd();
@@ -73,20 +103,34 @@ public class MainActivity extends AppCompatActivity {
                             && currTurn == maxTurns) {
                         //TIE
                         currPlayer.setText("TIE!!!");
+                        winningPlayer = NO_PLAYER_ID;
                     } else {
+                        gameTimeEnd = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - gameTimeStart);
                         //winner is declared
                         currPlayer.setText("The winner is Player " + gameEnd[gameEndWinnerPosition] + "!");
+                        winningPlayer = gameEnd[gameEndWinnerPosition] - 1;
                         // TODO: COLOR THE WINNING CELLS
                         colorWinningCells(gameEnd);
                     }
 
                     removeBoardClicks();
+
+
+
+                    Intent recordsIntent = new Intent(this, GameRecordsActivity.class);
+                    recordsIntent.putExtra("game_time", (int)gameTimeEnd);
+                    recordsIntent.putExtra("player_type", winningPlayer);
+                    finish();
+                    startActivity(recordsIntent);
                 }
 
                 firstPlayer = (!firstPlayer);
             });
         }
+
+        gameTimeStart = System.currentTimeMillis();
     }
+
 
     public int[] checkGameEnd() {
         int winner = NO_PLAYER_ID;
@@ -94,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
         for (int[] winningPosition : winningPositions) {
             if (gameBoardArray[winningPosition[gameEndCell1]] != NO_PLAYER_ID)
                 if (gameBoardArray[winningPosition[gameEndCell1]] == gameBoardArray[winningPosition[gameEndCell2]]
-                        &&gameBoardArray[winningPosition[gameEndCell1]] == gameBoardArray[winningPosition[gameEndCell3]]) {
+                        && gameBoardArray[winningPosition[gameEndCell1]] == gameBoardArray[winningPosition[gameEndCell3]]) {
                     winner = gameBoardArray[winningPosition[gameEndCell1]];
                     winningData[gameEndWinnerPosition] = winner;
                     winningData[gameEndCell1 + 1] = winningPosition[gameEndCell1];
