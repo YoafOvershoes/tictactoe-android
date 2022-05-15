@@ -197,7 +197,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/goToMainMenu"
             app:layout_constraintStart_toStartOf="@+id/goToMainMenu"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout"></Button>
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            android:backgroundTint="@color/light_purple"></Button>
 
         <Button
             android:id="@+id/goToMainMenu"
@@ -207,7 +208,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/linearLayout"
             app:layout_constraintStart_toStartOf="@+id/linearLayout"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout"></Button>
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            android:backgroundTint="@color/light_purple"></Button>
 
     </LinearLayout>
 
